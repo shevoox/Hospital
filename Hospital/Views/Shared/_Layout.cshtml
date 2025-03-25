@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hospital</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Hospital.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Hospital</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact" class="nav-book-appointment">Book an appointment</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hospital</h3>
+                <p>Making medical billing simple and stress-free for healthcare providers.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Email: info@hospital.com</li>
+                    <li>Phone: (555) 123-4567</li>
+                    <li>Address: 123 Medical Center Dr.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hospital. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
