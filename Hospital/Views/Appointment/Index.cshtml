@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Appointment>
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="row w-100">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Paitiant Name</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model){
+                                <tr>
+
+                                    <td>@item.PatientName</td>
+                                    <td>@item.DoctorName</td>
+                                    <td>@item.Date</td>
+                                    <td>@item.Time</td>
+                                </tr>
+}
+
+
+    </tbody>
+</table>
+</div>
+            </div>
+        </div>
+    </div>
+</div>

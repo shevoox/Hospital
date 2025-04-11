@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Book Bage";
+}
+
+
+<!-- Modal -->
+
+
+
+
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="row w-100">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div>
+                        <h1>Make Appointment With Doctor : @Model</h1>
+                    </div>
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["Error"]
+                        </div>
+                    }
+                    <!-- Modal Body -->
+                    <form method="get" action="/Appointment/CompletAppointment" onsubmit="return validateForm()">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="patientName" class="form-label">Patient Name</label>
+                                <input type="text" class="form-control" id="patientName" name="PatientName" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="doctorName" class="form-label">Doctor Name</label>
+                                <input type="text" class="form-control" id="doctorName" name="DoctorName" value="@Model" required readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="appointmentDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="appointmentDate" name="Date" required min="@DateTime.Now.ToString("yyyy-MM-dd")">
+                                <div class="text-danger mt-1" id="date-error" style="display:none;">Fridays and Saturdays are not allowed.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="appointmentTime" class="form-label">Time</label>
+                                <input type="time" class="form-control" id="appointmentTime" name="Time" required>
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="saveBtn">Save Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Appointment Saved</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your appointment has been successfully saved!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dateInput = document.getElementById("appointmentDate");
+        const errorMsg = document.getElementById("date-error");
+
+        dateInput.addEventListener("change", function () {
+            if (!this.value) return;
+
+            const selectedDate = new Date(this.value);
+            const day = selectedDate.getDay(); // Sunday = 0, Saturday = 6
+
+            if (day === 5 || day === 6) {
+                // Clear the selected date
+                this.value = "";
+                errorMsg.style.display = "block";
+            } else {
+                errorMsg.style.display = "none";
+            }
+        });
+    });
+    /////////////////////////////////////////////
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const saveBtn = document.getElementById("saveBtn");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const modal = new bootstrap.Modal(document.getElementById('successModal'));
+            modal.show();
+
+            document.querySelector('#successModal .btn-success').addEventListener('click', function () {
+                form.submit();
+            });
+        });
+    });
+</script>

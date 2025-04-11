@@ -14,19 +14,22 @@
         <nav>
             <div class="logo">Hospital</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="/home/index">Home</a></li>
                 <li><a href="#doctors">Doctors</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#contact" class="nav-book-appointment">Book an appointment</a></li>
+
+                <a href="/appointment/index" class="nav-book-appointment">
+                <li>All appointments</li></a>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <div class="d-flex flex-column min-vh-100">
+            <main id="home" class="flex-grow-1">
+                @RenderBody()
+            </main>
+            </div>
+
 
     <footer>
         <div class="footer-content">

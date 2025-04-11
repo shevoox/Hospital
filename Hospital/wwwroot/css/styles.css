@@ -1,8 +1,9 @@
 /* Reset and base styles */
 * {
-    margin: 0;
+    margin: 0 ;
     padding: 0;
     box-sizing: border-box;
+    overflow-x:hidden;
 }
 
 body {
@@ -407,4 +408,11 @@ footer {
 .footer-bottom p {
     color: #636e72;
     font-size: 0.9rem;
-} 
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color:white;
+}
